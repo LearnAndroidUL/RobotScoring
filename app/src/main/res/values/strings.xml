@@ -16,7 +16,7 @@
     <string name="distance_2">Robot Home</string>
     <string name="distance_2_points">%d</string>
     <string name="distance_update">Update</string>
-    <string name="wb_mission">White/Black (WB) mission:</string>
+    <string name="wb_mission">White/Black (WB) Mission:</string>
     <string name="wb_points">%d wb points</string>
     <string name="wb_failure">WB failure</string>
     <string name="wb_success">WB success</string>

@@ -1,167 +1,241 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="8dp"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <TextView
-            android:text="@string/color_ident"
-            android:layout_width="0sp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/TextView_color_points"
-            android:text="@string/color_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-        </LinearLayout>
-        <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp">
-        <Button
-            android:onClick="setColorFix3"
-            android:text="@string/color_fix3"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:onClick="setColorFix2"
-            android:text="@string/color_fix2"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:onClick="setColorFix1"
-            android:text="@string/color_fix1"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:onClick="setColorFix0"
-            android:text="@string/color_fix0"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/color_ident" />
+
+            <TextView
+                android:id="@+id/TextView_color_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/color_points" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setColorFix3"
+                android:text="@string/color_fix3" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setColorFix2"
+                android:text="@string/color_fix2" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setColorFix1"
+                android:text="@string/color_fix1" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setColorFix0"
+                android:text="@string/color_fix0" />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
+
+    <TableLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="1">
         android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/TextView_distance_0_points"
-            android:text="@string/distance_0_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/TextView_distance_1_points"
-            android:text="@string/distance_1_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <TextView
-            android:id="@+id/TextView_distance_2_points"
-            android:text="@string/distance_2_points"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
-    </LinearLayout>
+        android:layout_weight="1"
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance_cone" />
+        </TableRow>
+
+        <TableRow tools:background="?attr/colorButtonNormal">
+
+            <TextView />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/distance_feet" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance_points" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance_0" />
+
+            <EditText
+                android:id="@+id/EditText_distance_0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/TextView_distance_0_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/distance_0_points" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance_1" />
+
+            <EditText
+                android:id="@+id/EditText_distance_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/TextView_distance_1_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/distance_1_points" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/distance_2" />
+
+            <EditText
+                android:id="@+id/EditText_distance_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/TextView_distance_2_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/distance_2_points" />
+        </TableRow>
+    </TableLayout>
+
     <Button
-        android:text="@string/distance_update"
-        android:onClick="setDistance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        android:onClick="setDistance"
+        android:text="@string/distance_update" />
+
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <TextView
-            android:text="@string/wb_mission"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/TextView_wb_points"
-            android:text="@string/wb_points"
-            android:gravity="end"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/wb_mission" />
+
+            <TextView
+                android:id="@+id/TextView_wb_points"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="end"
+                android:text="@string/wb_points" />
         </LinearLayout>
+
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <Button
-            android:onClick="setColorFix1"
-            android:text="@string/wb_failure"
             android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"/>
-        <Button
-            android:onClick="setColorFix0"
-            android:text="@string/wb_success"
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="1"/>
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setWBfailure"
+                android:text="@string/wb_failure" />
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="setWBsuccess"
+                android:text="@string/wb_success" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/TextView_total_points"
-            android:text="@string/total_points"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"/>
+            android:layout_gravity="center_vertical"
+            android:text="@string/total_points" />
     </LinearLayout>
 
     <Button
-        android:text="@string/total_reset"
-        android:onClick="resetApp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"/>
+        android:layout_gravity="end"
+        android:onClick="resetApp"
+        android:text="@string/total_reset" />
 </LinearLayout>

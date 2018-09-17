@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.lang.reflect.Array;
+
 public class MainActivity extends AppCompatActivity {
     TextView mTextView_color_points;
     int mPointsColorFix = 0;
 
     int[] mPointsDistance = {0,0,0};
-    TextView[] mTextView_distance_points;
+    TextView[] mTextView_distance_points = new TextView[mPointsDistance.length];
 
     public final int mIndexFail    = 0;
     public final int mIndexSuccess = 1;
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mTextView_distance_points[2] = findViewById(R.id.TextView_distance_2_points);
         mTextView_wb_points          = findViewById(R.id.TextView_wb_points);
         mTextView_total_points       = findViewById(R.id.TextView_total_points);
+        resetApp(null);
 
     }
 
