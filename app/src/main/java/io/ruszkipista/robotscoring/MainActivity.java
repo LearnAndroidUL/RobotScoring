@@ -3,6 +3,7 @@ package io.ruszkipista.robotscoring;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.lang.reflect.Array;
@@ -13,9 +14,8 @@ public class MainActivity extends AppCompatActivity {
 
     int[] mPointsDistance = {0,0,0};
     TextView[] mTextView_distance_points = new TextView[mPointsDistance.length];
+    EditText[] mEditTextDistance = new EditText[mPointsDistance.length];
 
-    public final int mIndexFail    = 0;
-    public final int mIndexSuccess = 1;
     int mPointsWBballMission = 0;
     TextView mTextView_wb_points;
 
@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
         mTextView_distance_points[0] = findViewById(R.id.TextView_distance_0_points);
         mTextView_distance_points[1] = findViewById(R.id.TextView_distance_1_points);
         mTextView_distance_points[2] = findViewById(R.id.TextView_distance_2_points);
+        mEditTextDistance[0]         = findViewById(R.id.EditText_distance_0);
+        mEditTextDistance[1]         = findViewById(R.id.EditText_distance_1);
+        mEditTextDistance[2]         = findViewById(R.id.EditText_distance_2);
         mTextView_wb_points          = findViewById(R.id.TextView_wb_points);
         mTextView_total_points       = findViewById(R.id.TextView_total_points);
         resetApp(null);
@@ -40,10 +43,12 @@ public class MainActivity extends AppCompatActivity {
     public void setColorFix1(View view){ calculateColorFixPoints(1); }
     public void setColorFix2(View view){ calculateColorFixPoints(2); }
     public void setColorFix3(View view){ calculateColorFixPoints(3); }
-
     public void setDistance(View view){
         updateView();
     }
+    public void setWBfailure(View view){ calculateWBballMissionPoints(0); }
+    public void setWBsuccess(View view){ calculateWBballMissionPoints(1); }
+
 
     public void resetApp(View view){
         mPointsColorFix      = 0;
@@ -64,12 +69,15 @@ public class MainActivity extends AppCompatActivity {
         updateView();
     }
 
-    public void calculateConeDistancePoints(int line, double distance) {
+    private void calculateDistancePoints(int line, String sDistance) {
         final double[] feetDistance = {5.0, 10.0, 20.0, 30.0, 45.0, Double.MAX_VALUE};
         final int[][] pointRangeDistance = {{110, 100, 80, 50, 10, 0},
                 {220, 200, 160, 100, 20, 0},
                 {110, 100, 80, 50, 10, 0}};
         int category;
+        double distance;
+
+        distance = Double.parseDouble(sDistance);
 
         if (line >= 0 && line < mPointsDistance.length) {
             for (category = 0; category <  feetDistance.length; category++) {
@@ -82,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void calculateWBballMissionPoints(int button) {
+    private void calculateWBballMissionPoints(int button) {
         final int[] pointRangeWBballMission = {0,60};
         if (button>=0 && button<pointRangeWBballMission.length) {
             mPointsWBballMission = pointRangeWBballMission[button];
@@ -97,6 +105,9 @@ public class MainActivity extends AppCompatActivity {
         mTextView_distance_points[0].setText(getString(R.string.distance_0_points, mPointsDistance[0]));
         mTextView_distance_points[1].setText(getString(R.string.distance_1_points, mPointsDistance[1]));
         mTextView_distance_points[2].setText(getString(R.string.distance_2_points, mPointsDistance[2]));
+        calculateDistancePoints(0,mEditTextDistance[0].getText().toString());
+        calculateDistancePoints(1,mEditTextDistance[1].getText().toString());
+        calculateDistancePoints(2,mEditTextDistance[2].getText().toString());
         mTextView_wb_points.setText(getString(R.string.wb_points, mPointsWBballMission));
 
         mPointsTotal = mPointsColorFix + mPointsWBballMission;
