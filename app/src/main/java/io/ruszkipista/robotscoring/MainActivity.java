@@ -1,12 +1,10 @@
 package io.ruszkipista.robotscoring;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
 
 public class MainActivity extends AppCompatActivity {
     TextView mTextView_color_points;
@@ -54,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         mPointsColorFix      = 0;
         for (int i = 0; i< mPointsDistance.length; i++) {
             mPointsDistance[i] = 0;
+            mEditTextDistance[i].setText("");
         }
         mPointsWBballMission = 0;
         updateView();
@@ -76,14 +75,16 @@ public class MainActivity extends AppCompatActivity {
                 {110, 100, 80, 50, 10, 0}};
         int category;
         double distance;
-
-        distance = Double.parseDouble(sDistance);
+        try {
+            distance = Double.parseDouble(sDistance);
+        } catch (java.lang.NumberFormatException e) {
+            return;
+        }
 
         if (line >= 0 && line < mPointsDistance.length) {
             for (category = 0; category <  feetDistance.length; category++) {
                 if (distance <= feetDistance[category]) {
                     mPointsDistance[line] = pointRangeDistance[line][category];
-                    updateView();
                     break;
                 }
             }
@@ -102,12 +103,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void updateView(){
         mTextView_color_points.setText(getString(R.string.color_points, mPointsColorFix));
-        mTextView_distance_points[0].setText(getString(R.string.distance_0_points, mPointsDistance[0]));
-        mTextView_distance_points[1].setText(getString(R.string.distance_1_points, mPointsDistance[1]));
-        mTextView_distance_points[2].setText(getString(R.string.distance_2_points, mPointsDistance[2]));
         calculateDistancePoints(0,mEditTextDistance[0].getText().toString());
         calculateDistancePoints(1,mEditTextDistance[1].getText().toString());
         calculateDistancePoints(2,mEditTextDistance[2].getText().toString());
+        mTextView_distance_points[0].setText(getString(R.string.distance_0_points, mPointsDistance[0]));
+        mTextView_distance_points[1].setText(getString(R.string.distance_1_points, mPointsDistance[1]));
+        mTextView_distance_points[2].setText(getString(R.string.distance_2_points, mPointsDistance[2]));
         mTextView_wb_points.setText(getString(R.string.wb_points, mPointsWBballMission));
 
         mPointsTotal = mPointsColorFix + mPointsWBballMission;
